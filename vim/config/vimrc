@@ -70,7 +70,7 @@ nnoremap <Right> :echomsg "Use l"<cr>
 " Plugin scheme Config 主题插件====================>>
 set background=dark
 "colorscheme hybrid
-colorscheme gruvbox
+"colorscheme gruvbox
 
 
 " Plugin NERDTree Config ==========================>>
