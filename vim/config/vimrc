@@ -7,30 +7,35 @@ call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
-"
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " 启动界面
 Plugin 'mhinz/vim-startify'
-" 树目录
-Plugin 'scrooloose/nerdtree'
-" 需要python支持 
-"Plugin 'Valloric/YouCompleteMe'
+" git相关
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+
 " 底部状态栏
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" 主题
-Plugin 'w0ng/vim-hybrid'
-Plugin 'morhetz/gruvbox'
+" 树目录
+Plugin 'scrooloose/nerdtree'
 
+
+" 需要python支持 
+"Plugin 'Valloric/YouCompleteMe'
+" 主题
+"Plugin 'w0ng/vim-hybrid'
+"Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 
-" my config ===================================================
+" basic config ===================================================
 " 显示行号
 set number
 " 使用 utf-8 编码
@@ -67,19 +72,17 @@ nnoremap <Left> :echomsg "Use h"<cr>
 nnoremap <Right> :echomsg "Use l"<cr>
 
 
-" Plugin scheme Config 主题插件====================>>
-set background=dark
-"colorscheme hybrid
-"colorscheme gruvbox
-
-
 " Plugin NERDTree Config ==========================>>
 let mapleader=','
 let g:mapleader=','
 nmap ,v :NERDTreeFind<cr>
 nmap ,g :NERDTreeToggle<cr>
 
+" Plugin scheme Config 主题插件====================>>
+set background=dark
+"colorscheme hybrid
+"colorscheme gruvbox
 
-" Plugin xxx Config 
-
+" Plugin vim-airline Config =======================>>
+set laststatus=2
 
