@@ -1,0 +1,43 @@
+" 显示行号
+set number
+" 相对行号
+set relativenumber
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
+
+" 禁止使用上下左右键
+nnoremap <Up> :echomsg "Use k"<cr>
+nnoremap <Down> :echomsg "Use j"<cr>
+nnoremap <Left> :echomsg "Use h"<cr>
+nnoremap <Right> :echomsg "Use l"<cr>
+
+" Insert mode shortcut
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+
+" <Space> :action
+nnoremap <Space>/ :action Find<CR>
+nnoremap <Space>gc :action GotoClass<CR>
+nnoremap <Space>ga :action GotoAction<CR>
+nnoremap <Space>fp :action ShowFilePath<CR>
+nnoremap <Space>pm :action ShowPopupMenu<CR>
+nnoremap <Space>bg :action Debug<CR>
+nnoremap <Space>b :action Build Project<CR>
+
+
+" 开启根据语法折叠代码
+set foldmethod=syntax
+set foldlevelstart=1
+let javaScript_fold=1        " JavaScript
+let perl_fold=1              " Perl
+let php_folding=1            " PHP
+let r_syntax_folding=1       " R
+let ruby_fold=1              " Ruby
+let sh_fold_enabled=1        " sh
+let vimsyn_folding='af'      " Vim script
+let xml_syntax_folding=1     " XML
