@@ -71,6 +71,11 @@ nnoremap <Down> :echomsg "Use j"<cr>
 nnoremap <Left> :echomsg "Use h"<cr>
 nnoremap <Right> :echomsg "Use l"<cr>
 
+" 映射
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j 
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " Plugin scheme Config 主题插件====================>>
 set background=dark
