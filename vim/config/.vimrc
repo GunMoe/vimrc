@@ -48,10 +48,18 @@ nnoremap <Down> :echomsg "Use j"<cr>
 nnoremap <Left> :echomsg "Use h"<cr>
 nnoremap <Right> :echomsg "Use l"<cr>
 
+" 窗口切换映射
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j 
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+inoremap jjj <Esc>`^ "退出insert模式
+
 " sudo to write
 cnoremap w!! w !sudo tee %>/dev/null
 " json format
-"com! FormatJSON %!python3 -m json.tool
+com! FormatJSON %!python3 -m json.tool
 
 " Plugin NERDTree Config ==========================>>
 let mapleader=','
