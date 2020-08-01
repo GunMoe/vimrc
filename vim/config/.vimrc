@@ -1,37 +1,27 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin('~/.vim/plugged')
 " 启动界面
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 " git相关
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " 底部状态栏
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" 树目录
-Plugin 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'ctrlpvim/ctrlp.im' " 模糊打开文件
+Plug 'tpope/vim-surround' "成双成对
+Plug 'scrooloose/nerdtree' " 树目录
+Plug 'easymotion/vim-easymotion' " 快速搜索定位
+
 " other
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"
+" colorscheme
+Plug 'morhetz/gruvbox'
+call plug#end()
 
-" 主题
-Plugin 'morhetz/gruvbox'
-"Plugin 'w0ng/vim-hybrid'
-
-" 需要python支持 
-"Plugin 'Valloric/YouCompleteMe'
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-
-" basic config ===================================================
+" basic config ===================================================>>
 syntax on " 语法高亮
 set number " 显示行号
 set t_Co=256 " 启用256色
@@ -44,7 +34,7 @@ set expandtab " 设置自动将 Tab 转为空格
 set shiftwidth=4 " 缩进每一级的字符数
 set softtabstop=4 " Tab 转为多少个空格
 
-" key=>map ==================================================================================>>
+" key=>map =======================================================>>
 " sudo to write
 cnoremap w!! w !sudo tee %>/dev/null 
 " 禁止使用上下左右键
@@ -65,7 +55,7 @@ map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 inoremap jjj <Esc>`^ "退出insert模式
 com! FormatJSON %!python3 -m json.tool " json format
 
-" Plugin NERDTree Config ==========================>>
+" Plug NERDTree config 
 let mapleader=','
 let g:mapleader=','
 nmap ,v :NERDTreeFind<cr>
@@ -73,12 +63,12 @@ nmap ,g :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.git$']
 
-" Plugin scheme Config 主题插件====================>>
+" Plug scheme config
 set background=dark
 colorscheme gruvbox
 set term=screen-256color
 
-" Plugin vim-airline Config =======================>>
+" Plug vim-airline config 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -89,8 +79,11 @@ let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
+" Plug easymotion config 
+nmap ss <Plug>(easymotion-s2)
+
 " other =====================================================>
-nmap ss <Plugin>(easymotion-s2)
+"let g:ctrlp_map = '<c-p>' " 目前不知道有啥用......
 
 
 " bak =======================================================
