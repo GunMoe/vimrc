@@ -17,6 +17,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " 树目录
 Plugin 'scrooloose/nerdtree'
+" other
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
 
 " 主题
 Plugin 'morhetz/gruvbox'
@@ -42,30 +45,33 @@ set shiftwidth=4 " 缩进每一级的字符数
 set softtabstop=4 " Tab 转为多少个空格
 
 " key=>map ==================================================================================>>
+" sudo to write
+cnoremap w!! w !sudo tee %>/dev/null 
 " 禁止使用上下左右键
 nnoremap <Up> :echomsg "Use k"<cr>
 nnoremap <Down> :echomsg "Use j"<cr>
 nnoremap <Left> :echomsg "Use h"<cr>
 nnoremap <Right> :echomsg "Use l"<cr>
-
 " 窗口切换映射
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j 
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+" win10 WSL system copy
+map ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
+map ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
+map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 
 inoremap jjj <Esc>`^ "退出insert模式
-
-" sudo to write
-cnoremap w!! w !sudo tee %>/dev/null
-" json format
-com! FormatJSON %!python3 -m json.tool
+com! FormatJSON %!python3 -m json.tool " json format
 
 " Plugin NERDTree Config ==========================>>
 let mapleader=','
 let g:mapleader=','
 nmap ,v :NERDTreeFind<cr>
 nmap ,g :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.git$']
 
 " Plugin scheme Config 主题插件====================>>
 set background=dark
@@ -83,6 +89,8 @@ let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
+" other =====================================================>
+nmap ss <Plugin>(easymotion-s2)
 
 
 " bak =======================================================
