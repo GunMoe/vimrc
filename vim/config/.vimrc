@@ -7,6 +7,9 @@ Plug 'airblade/vim-gitgutter'
 " 底部状态栏
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" 模糊搜索打开文件 , 需要fzf与ag支持
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'ctrlpvim/ctrlp.im' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
@@ -14,9 +17,8 @@ Plug 'scrooloose/nerdtree' " 树目录
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 
 " other
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-"
+
+
 " colorscheme
 Plug 'morhetz/gruvbox'
 call plug#end()
