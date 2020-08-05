@@ -11,7 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'ctrlpvim/ctrlp.im' " 模糊打开文件
+Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
 Plug 'scrooloose/nerdtree' " 树目录
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
