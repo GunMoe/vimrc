@@ -14,8 +14,8 @@ Plug 'scrooloose/nerdtree' " 树目录
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 
 " other
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "
 " colorscheme
 Plug 'morhetz/gruvbox'
