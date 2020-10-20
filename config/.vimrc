@@ -68,7 +68,7 @@ let NERDTreeIgnore = ['\.git$']
 " Plug scheme config
 set background=dark
 colorscheme gruvbox
-set term=screen-256color
+"set term=screen-256color
 
 " Plug vim-airline config 
 let g:airline#extensions#tabline#enabled = 1
