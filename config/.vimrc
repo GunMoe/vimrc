@@ -57,7 +57,10 @@ map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 inoremap jjj <Esc>`^ "退出insert模式
 com! FormatJSON %!python3 -m json.tool " json format
 
-" Plug NERDTree config 
+
+""""""" Plug config =======>>>>
+
+" Plug 'scrooloose/nerdtree' " 树目录
 let mapleader=','
 let g:mapleader=','
 nmap ,v :NERDTreeFind<cr>
@@ -70,7 +73,7 @@ set background=dark
 colorscheme gruvbox
 "set term=screen-256color
 
-" Plug vim-airline config 
+" Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -81,7 +84,10 @@ let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-" Plug easymotion config 
+" Plug 'airblade/vim-gitgutter'
+set updatetime=200
+
+" Plug 'easymotion/vim-easymotion' " 快速搜索定位
 nmap ss <Plug>(easymotion-s2)
 
 " other =====================================================>
