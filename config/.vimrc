@@ -15,6 +15,7 @@ Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
 Plug 'scrooloose/nerdtree' " 树目录
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 
 " other
 
@@ -89,6 +90,10 @@ set updatetime=200
 
 " Plug 'easymotion/vim-easymotion' " 快速搜索定位
 nmap ss <Plug>(easymotion-s2)
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css']
+
 
 " other =====================================================>
 "let g:ctrlp_map = '<c-p>' " 目前不知道有啥用......
