@@ -92,7 +92,7 @@ set updatetime=200
 nmap ss <Plug>(easymotion-s2)
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-clangd', 'coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css']
 
 
 " other =====================================================>
