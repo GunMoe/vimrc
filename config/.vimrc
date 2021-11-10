@@ -50,12 +50,15 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j 
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+" 执行当前文件
+nnoremap <F5> :!%:p<cr>
+
 " win10 WSL system copy
 map ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
 map ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 
-inoremap jjj <Esc>`^ "退出insert模式
+inoremap jj <Esc>`^ "退出insert模式
 com! FormatJSON %!python3 -m json.tool " json format
 
 
@@ -92,7 +95,7 @@ set updatetime=200
 nmap ss <Plug>(easymotion-s2)
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
-let g:coc_global_extensions = ['coc-clangd', 'coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css', 'coc-clangd']
 
 
 " other =====================================================>
