@@ -37,6 +37,12 @@ set expandtab " 设置自动将 Tab 转为空格
 set shiftwidth=4 " 缩进每一级的字符数
 set softtabstop=4 " Tab 转为多少个空格
 
+" Uncomment the following to have Vim jump to the last position when       
+" reopening a file                                                         
+if has("autocmd")                                                          
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                                                        
+endif 
+
 " key=>map =======================================================>>
 " sudo to write
 cnoremap w!! w !sudo tee %>/dev/null 
