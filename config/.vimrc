@@ -13,7 +13,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
-Plug 'scrooloose/nerdtree' " 树目录
+Plug 'preservim/nerdtree' " 树目录
+Plug 'preservim/nerdcommenter' "代码注释
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 
@@ -45,7 +46,7 @@ endif
 
 " key=>map =======================================================>>
 " sudo to write
-cnoremap w!! w !sudo tee %>/dev/null 
+cnoremap w!! w !sudo tee %>/dev/null
 " 禁止使用上下左右键
 nnoremap <Up> :echomsg "Use k"<cr>
 nnoremap <Down> :echomsg "Use j"<cr>
