@@ -38,6 +38,11 @@ set expandtab " 设置自动将 Tab 转为空格
 set shiftwidth=4 " 缩进每一级的字符数
 set softtabstop=4 " Tab 转为多少个空格
 
+"set foldmethod=manual " 按手工折叠 zf - za
+"set foldmethod=indent " 按缩进折叠 zm - zr
+set foldmethod=syntax " 按语法折叠 zm - zr
+set foldcolumn=6 " 左侧显示折叠信息的宽度
+
 " Uncomment the following to have Vim jump to the last position when       
 " reopening a file                                                         
 if has("autocmd")                                                          
