@@ -1,4 +1,4 @@
 # vimrc
-vim config ..
+vim config ...
 
 
