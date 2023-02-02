@@ -14,12 +14,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
 Plug 'preservim/nerdtree' " 树目录
+Plug 'jistr/vim-nerdtree-tabs' " 树目录扩展
 Plug 'preservim/nerdcommenter' "代码注释
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 
 " other
-
 
 " colorscheme
 Plug 'morhetz/gruvbox'
@@ -38,16 +38,18 @@ set expandtab " 设置自动将 Tab 转为空格
 set shiftwidth=4 " 缩进每一级的字符数
 set softtabstop=4 " Tab 转为多少个空格
 
-"set foldmethod=manual " 按手工折叠 zf - za
+set foldmethod=manual " 按手工折叠 zf - za
 "set foldmethod=indent " 按缩进折叠 zm - zr
-set foldmethod=syntax " 按语法折叠 zm - zr
-set foldcolumn=6 " 左侧显示折叠信息的宽度
+"set foldmethod=syntax " 按语法折叠 zm - zr
+set foldcolumn=4 " 左侧显示折叠信息的宽度
 
 " Uncomment the following to have Vim jump to the last position when       
 " reopening a file                                                         
 if has("autocmd")                                                          
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                                                        
 endif 
+autocmd BufWinLeave *.* mkview " 退出时保存当前视图
+autocmd BufWinEnter *.* silent loadview " 打开时自动加载保存的视图
 
 " key=>map =======================================================>>
 " sudo to write
@@ -118,3 +120,28 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 
 " 是否显示状态栏。0 表示不显示，1 表示只在多窗口时显示，2 表示显示 (使用vim-airline替代了)
 "set laststatus=2
 "set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+
+
+"=========================================
+" Startify 设置
+"=========================================
+" 修改其中的内容去获得更好的体验。
+"设置书签
+let g:startify_bookmarks= [
+            \ '~/workspaces/',
+            \]
+"起始页显示的列表长度
+let g:startify_files_number = 5 
+"自动加载session
+let g:startify_session_autoload = 1
+"过滤列表，支持正则表达式
+let g:startify_skiplist = [
+       \ '^/tmp',
+       \ ]
+
+"自定义Footer
+let g:startify_custom_footer = [
+            \ '+------------------------------+',
+            \ '|     Keep an open mind!       |',
+            \ '+----------------+-------------+',
+            \]
