@@ -1,7 +1,5 @@
 call plug#begin('~/.vim/plugged')
-" 启动界面
-Plug 'mhinz/vim-startify'
-" git相关
+" Git插件
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " 底部状态栏
@@ -11,18 +9,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'morhetz/gruvbox' " ColorScheme
+Plug 'preservim/nerdtree' " 树目录
+Plug 'mhinz/vim-startify' " 启动界面
 Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
 Plug 'tpope/vim-surround' "成双成对
-Plug 'preservim/nerdtree' " 树目录
-Plug 'jistr/vim-nerdtree-tabs' " 树目录扩展
 Plug 'preservim/nerdcommenter' "代码注释
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 
-" other
-
-" colorscheme
-Plug 'morhetz/gruvbox'
 call plug#end()
 
 " basic config ===================================================>>
@@ -43,17 +38,28 @@ set foldmethod=manual " 按手工折叠 zf - za
 "set foldmethod=syntax " 按语法折叠 zm - zr
 set foldcolumn=4 " 左侧显示折叠信息的宽度
 
-" Uncomment the following to have Vim jump to the last position when       
-" reopening a file                                                         
+let mapleader=','
+let g:mapleader=','
+
+autocmd BufWinLeave *.* mkview " 退出时保存当前视图
+autocmd BufWinEnter *.* silent loadview " 打开时自动加载保存的视图
+" Jump to the last location when reopening the file
 if has("autocmd")                                                          
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                                                        
 endif 
-autocmd BufWinLeave *.* mkview " 退出时保存当前视图
-autocmd BufWinEnter *.* silent loadview " 打开时自动加载保存的视图
 
 " key=>map =======================================================>>
 " sudo to write
 cnoremap w!! w !sudo tee %>/dev/null
+" execute current file
+nnoremap <F5> :!%:p<cr>
+" exit insert mode
+inoremap jj <Esc> 
+" leader write file
+nnoremap <Leader>w :w<CR>
+" remove trailing spaces
+nnoremap <leader>D :%s/\s\+$//<cr>:let @/=''<CR> 
+
 " 禁止使用上下左右键
 nnoremap <Up> :echomsg "Use k"<cr>
 nnoremap <Down> :echomsg "Use j"<cr>
@@ -64,34 +70,39 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j 
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-" 执行当前文件
-nnoremap <F5> :!%:p<cr>
 
 " win10 WSL system copy
 map ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
 map ;p :read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 
-inoremap jj <Esc>`^ "退出insert模式
+
+" tools =======================================================>>
 com! FormatJSON %!python3 -m json.tool " json format
 
-
-""""""" Plug config =======>>>>
-
-" Plug 'scrooloose/nerdtree' " 树目录
-let mapleader=','
-let g:mapleader=','
-nmap ,v :NERDTreeFind<cr>
-nmap ,g :NERDTreeToggle<cr>
-let NERDTreeShowHidden=1
+" Plug config ====================================================>>
+" ==> Plug 'scrooloose/nerdtree' " 树目录
+nmap <Leader>g :NERDTreeToggle<cr>
+nmap <Leader>f :NERDTreeFind<cr>
 let NERDTreeIgnore = ['\.git$']
+let NERDTreeShowBookmarks=1
 
-" Plug scheme config
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" ==> Plug scheme config
 set background=dark
 colorscheme gruvbox
 "set term=screen-256color
 
-" Plug 'vim-airline/vim-airline'
+" ==> Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -102,13 +113,13 @@ let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-" Plug 'airblade/vim-gitgutter'
+" ==> Plug 'airblade/vim-gitgutter'
 set updatetime=200
 
-" Plug 'easymotion/vim-easymotion' " 快速搜索定位
+" ==> Plug 'easymotion/vim-easymotion' " 快速搜索定位
 nmap ss <Plug>(easymotion-s2)
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
+" ==> Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css', 'coc-clangd']
 
 
