@@ -59,6 +59,8 @@ inoremap jj <Esc>
 nnoremap <Leader>w :w<CR>
 " remove trailing spaces
 nnoremap <leader>D :%s/\s\+$//<cr>:let @/=''<CR> 
+nnoremap <leader>t :terminal ++rows=10<CR> 
+
 
 " 禁止使用上下左右键
 nnoremap <Up> :echomsg "Use k"<cr>
@@ -81,12 +83,33 @@ map! ;p <esc>:read !/mnt/c/Windows/System32/paste.exe <cr>i<bs><esc>l
 com! FormatJSON %!python3 -m json.tool " json format
 
 " Plug config ====================================================>>
-" ==> Plug 'scrooloose/nerdtree' " 树目录
+" ==> Plug Scheme
+set background=dark
+colorscheme gruvbox
+"set term=screen-256color
+
+
+" ==> Plug mhinz/vim-startify
+let g:startify_lists = [
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+let g:startify_bookmarks= [
+            \ '~/workspaces/',
+            \]
+let g:startify_files_number = 5 
+let g:startify_session_autoload = 1
+let g:startify_skiplist = [
+       \ '^/tmp',
+       \ ]
+
+" ==> Plug scrooloose/nerdtree
 nmap <Leader>g :NERDTreeToggle<cr>
 nmap <Leader>f :NERDTreeFind<cr>
 let NERDTreeIgnore = ['\.git$']
 let NERDTreeShowBookmarks=1
-
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Start NERDTree when Vim starts with a directory argument.
@@ -97,10 +120,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-" ==> Plug scheme config
-set background=dark
-colorscheme gruvbox
-"set term=screen-256color
 
 " ==> Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -133,26 +152,3 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 
 "set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
 
-"=========================================
-" Startify 设置
-"=========================================
-" 修改其中的内容去获得更好的体验。
-"设置书签
-let g:startify_bookmarks= [
-            \ '~/workspaces/',
-            \]
-"起始页显示的列表长度
-let g:startify_files_number = 5 
-"自动加载session
-let g:startify_session_autoload = 1
-"过滤列表，支持正则表达式
-let g:startify_skiplist = [
-       \ '^/tmp',
-       \ ]
-
-"自定义Footer
-let g:startify_custom_footer = [
-            \ '+------------------------------+',
-            \ '|     Keep an open mind!       |',
-            \ '+----------------+-------------+',
-            \]
