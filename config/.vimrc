@@ -121,6 +121,15 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 
+" ==> Plug junegunn/fzf.vim
+nnoremap ff :Files <CR>
+nnoremap <c-g> :Ag <CR>
+
+
+" ==> Plug ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+
+
 " ==> Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
@@ -143,7 +152,6 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 
 
 
 " other =====================================================>
-"let g:ctrlp_map = '<c-p>' " 目前不知道有啥用......
 
 
 " bak =======================================================
