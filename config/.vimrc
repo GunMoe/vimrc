@@ -126,14 +126,18 @@ nnoremap ff :Files <CR>
 nnoremap <c-g> :Ag <CR>
 
 
+" ==> Plug easymotion/vim-easymotion
+nmap ss <Plug>(easymotion-s2)
+
+
 " ==> Plug ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 
 
-" ==> Plug 'vim-airline/vim-airline'
+" ==> Plug vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#buffer_nr_show = 0
@@ -144,8 +148,6 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 " ==> Plug 'airblade/vim-gitgutter'
 set updatetime=200
 
-" ==> Plug 'easymotion/vim-easymotion' " 快速搜索定位
-nmap ss <Plug>(easymotion-s2)
 
 " ==> Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css', 'coc-clangd']
