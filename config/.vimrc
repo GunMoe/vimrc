@@ -174,3 +174,16 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 
 " ==> 代码折叠
 " zf[n] 折叠代码 n>数字(行数), %(下一个括号) ...
 " za 展开|收缩 折叠
+" zd 删除折叠
+
+" ==> 标签操作
+" 在vim文件中使用t 打开新标签
+" gt 下一个标签页
+" gT 上一个标签页
+
+" ==> 快速搜索&定位
+" :Files | ff 打开fzf首页窗
+" :Ag | <c-g> 打开ag搜索窗
+" <c-p> 打开ctrlP搜索
+" ss 可视范围内的快速定位
+
