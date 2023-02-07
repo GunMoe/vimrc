@@ -13,7 +13,7 @@ Plug 'morhetz/gruvbox' " ColorScheme
 Plug 'preservim/nerdtree' " 树目录
 Plug 'mhinz/vim-startify' " 启动界面
 Plug 'ctrlpvim/ctrlp.vim' " 模糊打开文件
-Plug 'tpope/vim-surround' "成双成对
+Plug 'tpope/vim-surround' "成双成对 - 不怎么用
 Plug 'preservim/nerdcommenter' "代码注释
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
@@ -156,9 +156,21 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 
 " other =====================================================>
 
 
-" bak =======================================================
-" 是否显示状态栏。0 表示不显示，1 表示只在多窗口时显示，2 表示显示 (使用vim-airline替代了)
-"set laststatus=2
-"set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+" PS ==========================================================================================================================>
+" ==> Plug 'preservim/nerdcommenter' "代码注释
+" ,ca在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//  
+" ,cc注释当前行
+" ,c<space> 切换注释/非注释状态
+" ,cs 以”性感”的方式注释
+" ,cA 在当前行尾添加注释符，并进入Insert模式
+" ,cu 取消注释
+" ,c$ 从光标开始到行尾注释  ，这个要说说因为c$也是从光标到行尾的快捷键，这个按过逗号（，）要快一点按c$
+" 2,cc 光标以下count行添加注释 
+" 2,cu 光标以下count行取消注释
+" 2,cm:光标以下count行添加块注释(2,cm)
+" Normal模式下，几乎所有命令前面都可以指定行数
+" Visual模式下执行命令，会对选中的特定区块进行注释/反注释
 
-
+" ==> 代码折叠
+" zf[n] 折叠代码 n>数字(行数), %(下一个括号) ...
+" za 展开|收缩 折叠
