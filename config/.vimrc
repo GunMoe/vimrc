@@ -19,6 +19,7 @@ Plug 'preservim/nerdcommenter' "代码注释
 Plug 'easymotion/vim-easymotion' " 快速搜索定位
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -61,7 +62,7 @@ inoremap jj <Esc>
 nnoremap <Leader>w :w<CR>
 " remove trailing spaces
 nnoremap <leader>D :%s/\s\+$//<cr>:let @/=''<CR> 
-nnoremap <leader>t :terminal ++rows=10<CR> 
+nnoremap <leader>T :terminal ++rows=10<CR> 
 
 
 " 禁止使用上下左右键
@@ -170,6 +171,17 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 " ==> Plug 'neoclide/coc.nvim', {'branch': 'release'} "代码提示
 let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-sh', 'coc-sql', 'coc-xml', 'coc-html', 'coc-css', 'coc-clangd']
+
+
+" ==> Plug 'voldikss/vim-floaterm' 悬浮终端
+"let g:floaterm_width = 0.5
+"let g:floaterm_height = 0.4
+"let g:floaterm_wintype = "vsplit"
+let g:floaterm_position = "bottomright"
+let g:floaterm_keymap_toggle = '<leader>t'
+"let g:floaterm_keymap_new = '<leader>sn'
+"let g:floaterm_keymap_prev = '<leader>sl'
+"let g:floaterm_keymap_next = '<leader>sh'
 
 
 " other =====================================================>
