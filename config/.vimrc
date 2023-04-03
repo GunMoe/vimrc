@@ -27,9 +27,10 @@ call plug#end()
 syntax on " 语法高亮
 set number " 显示行号
 set t_Co=256 " 启用256色
-set encoding=utf-8 " 使用 utf-8 编码
-set cursorline " 光标所在的当前行高亮
 set relativenumber " 相对行号
+set cursorline " 光标所在行高亮
+set encoding=utf-8 " 使用 utf-8 编码
+set fileencodings=utf-8,cp936,gb18030
 
 set tabstop=4 " 按下 Tab 键时，Vim 显示的空格数
 set expandtab " 设置自动将 Tab 转为空格
