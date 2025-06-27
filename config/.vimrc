@@ -73,10 +73,10 @@ nnoremap <Down> :echomsg "Use j"<cr>
 nnoremap <Left> :echomsg "Use h"<cr>
 nnoremap <Right> :echomsg "Use l"<cr>
 " 窗口切换映射 切换使用插件 兼容tmux
-"noremap <C-h> <C-w>h
-"noremap <C-j> <C-w>j 
-"noremap <C-k> <C-w>k
-"noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j 
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " win10 WSL system copy
 map ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
